@@ -73,7 +73,7 @@ export default function App() {
           <div className="flex flex-wrap items-center gap-3 justify-between">
             <h1 className="text-xl sm:text-2xl font-semibold tracking-tight flex items-center gap-2">
               <span className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-gradient-to-br from-brand-400 to-brand-600 flex items-center justify-center shadow-soft ring-1 ring-white/10">🔎</span>
-              <GradientText>SIL Tool Advisor</GradientText>
+              <GradientText>BT Tool Advisor</GradientText>
             </h1>
             <div className="flex items-center gap-2">
               <button onClick={() => setDark(d => !d)} className="px-3 py-1.5 text-xs sm:text-sm rounded-md bg-white/10 hover:bg-white/15 backdrop-blur border border-white/10 transition">
@@ -83,7 +83,7 @@ export default function App() {
           </div>
           <div className="max-w-2xl space-y-4">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight leading-tight animate-fade-in">
-              Find the <GradientText>right SIL tool</GradientText> for your task
+              Find the <GradientText>right BT tool</GradientText> for your task
             </h2>
             <p className="text-base sm:text-lg text-slate-300 leading-relaxed">
               Describe what you want to accomplish. We’ll surface the most relevant tools, documentation & training materials.
@@ -220,7 +220,7 @@ export default function App() {
 
   <footer className="mt-20 sm:mt-24 pt-8 sm:pt-10 border-t border-white/10 text-center text-xs text-slate-500 pb-[env(safe-area-inset-bottom)]">
         <p className="mb-2">Prototype – Data illustrative only</p>
-        <p>&copy; {new Date().getFullYear()} SIL Tools</p>
+  <p>&copy; {new Date().getFullYear()} BT Tools</p>
       </footer>
     </div>
   );
