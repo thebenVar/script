@@ -1,6 +1,12 @@
+/* Tailwind layer directives (processed by PostCSS + Tailwind). The raw editor may flag them until Tailwind runs. */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Custom global styles (if any) */
-body { @apply bg-gray-50 text-gray-900 antialiased; }
+/* Minimal global fallback (avoid @apply here to silence unknown at-rule warnings in plain CSS parser) */
+body {
+	background-color: #020617; /* slate-950 fallback */
+	color: #f1f5f9; /* slate-100 fallback */
+	-webkit-font-smoothing: antialiased;
+	text-rendering: optimizeLegibility;
+}
