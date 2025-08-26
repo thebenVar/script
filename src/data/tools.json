@@ -1,0 +1,29 @@
+[
+  {
+    "name": "PTXprint",
+    "tagline": "High quality scripture layout from Paratext",
+    "description": "Create beautiful, print-ready PDFs from Paratext projects with powerful layout controls.",
+    "badges": ["PDF", "Layout", "Paratext"],
+    "documentation": [
+      { "title": "User Guide", "url": "https://software.sil.org/ptxprint/documentation/" },
+      { "title": "FAQ", "url": "https://software.sil.org/ptxprint/faq/" }
+    ],
+    "related": ["Paratext"],
+    "supportForums": [
+      { "title": "PTXprint Forum", "url": "https://community.support.bible/c/ptxprint/34" }
+    ]
+  },
+  {
+    "name": "Paratext",
+    "tagline": "Collaborative Bible translation environment",
+    "description": "Powerful translation, checking, and collaboration platform for scripture projects.",
+    "badges": ["Translation", "Collaboration"],
+    "documentation": [
+      { "title": "User Guide", "url": "https://paratext.org/documentation/" }
+    ],
+    "related": ["PTXprint"],
+    "supportForums": [
+      { "title": "Paratext Support", "url": "https://community.support.bible/c/paratext/15" }
+    ]
+  }
+]

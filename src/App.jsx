@@ -1,36 +1,20 @@
 
 import React, { useState, useEffect } from 'react';
-
-const sampleTools = [
-  {
-    name: 'PTXprint',
-    tagline: 'High quality scripture layout from Paratext',
-    description: 'Create beautiful, print-ready PDFs from Paratext projects with powerful layout controls.',
-    badges: ['PDF', 'Layout', 'Paratext'],
-    documentation: [
-      { title: 'User Guide', url: 'https://software.sil.org/ptxprint/documentation/' },
-      { title: 'FAQ', url: 'https://software.sil.org/ptxprint/faq/' }
-    ]
-  },
-  {
-    name: 'Paratext',
-    tagline: 'Collaborative Bible translation environment',
-    description: 'Powerful translation, checking, and collaboration platform for scripture projects.',
-    badges: ['Translation', 'Collaboration'],
-    documentation: [
-      { title: 'User Guide', url: 'https://paratext.org/documentation/' }
-    ]
-  }
-];
+import sampleTools from './data/tools_catalog.json';
 
 function matchIntent(intent) {
   const q = intent.toLowerCase();
   if (!q.trim()) return [];
-  return sampleTools.filter(t =>
-    [t.name, t.description, ...(t.badges||[])].some(field => field.toLowerCase().includes(q)) ||
-    (q.includes('pdf') && t.name === 'PTXprint') ||
-    (q.includes('paratext') && (t.name === 'Paratext' || t.name === 'PTXprint'))
-  );
+  return sampleTools.filter(t => {
+    const fields = [
+      t.name,
+      t.description,
+      ...(t.badges || []),
+      ...(t.categories || []),
+      ...(t.platforms || [])
+    ].filter(Boolean);
+    return fields.some(field => field.toLowerCase().includes(q));
+  });
 }
 
 const GradientText = ({ children }) => (
@@ -45,6 +29,63 @@ export default function App() {
   const [link, setLink] = useState('');
   const [notebookResource, setNotebookResource] = useState(null);
   const [dark, setDark] = useState(true);
+  const [ratings, setRatings] = useState(() => ({ /* toolName: { total: number, count: number } */ }));
+  const [userRatings, setUserRatings] = useState(() => ({ /* toolName: stars */ }));
+
+  // Load persisted ratings from localStorage
+  useEffect(() => {
+    try {
+      const stored = JSON.parse(localStorage.getItem('bt_tool_ratings') || '{}');
+      const storedUser = JSON.parse(localStorage.getItem('bt_tool_userRatings') || '{}');
+      if (stored && typeof stored === 'object') setRatings(stored);
+      if (storedUser && typeof storedUser === 'object') setUserRatings(storedUser);
+    } catch (e) {
+      // ignore parse errors
+    }
+  }, []);
+
+  // Persist ratings
+  useEffect(() => {
+    try { localStorage.setItem('bt_tool_ratings', JSON.stringify(ratings)); } catch (_) {}
+  }, [ratings]);
+  useEffect(() => {
+    try { localStorage.setItem('bt_tool_userRatings', JSON.stringify(userRatings)); } catch (_) {}
+  }, [userRatings]);
+
+  const handleRate = (toolName, stars) => {
+    setRatings(prev => {
+      const current = prev[toolName] || { total: 0, count: 0 };
+      const userPrev = userRatings[toolName];
+      let newTotal = current.total;
+      let newCount = current.count;
+      // If user had rated before, replace their previous rating
+      if (userPrev) {
+        newTotal = newTotal - userPrev + stars;
+      } else {
+        newTotal += stars;
+        newCount += 1;
+      }
+      return { ...prev, [toolName]: { total: newTotal, count: newCount } };
+    });
+    setUserRatings(prev => ({ ...prev, [toolName]: stars }));
+  };
+
+  const getAverage = (toolName) => {
+    const r = ratings[toolName];
+    if (!r || r.count === 0) return null;
+    return (r.total / r.count).toFixed(1);
+  };
+
+  const handleRelatedClick = (name) => {
+    setIntent(name);
+    const matched = matchIntent(name);
+    setResults(matched);
+    // scroll to results
+    setTimeout(() => {
+      const mainEl = document.getElementById('main');
+      if (mainEl) mainEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 50);
+  };
 
   useEffect(() => {
     document.documentElement.classList.toggle('dark', dark);
@@ -137,6 +178,27 @@ export default function App() {
                       </h3>
                       <span className="px-2 py-1 rounded-md text-[10px] font-medium bg-brand-500/20 text-brand-200 border border-brand-400/30">Tool</span>
                     </div>
+                    {/* Ratings */}
+                    <div className="mt-2 flex items-center gap-2">
+                      <div className="flex" aria-label={`Rate ${tool.name}`}>
+                        {[1,2,3,4,5].map(star => {
+                          const userVal = userRatings[tool.name] || 0;
+                          return (
+                            <button
+                              key={star}
+                              type="button"
+                              onClick={() => handleRate(tool.name, star)}
+                              className={`w-5 h-5 text-xs flex items-center justify-center rounded hover:bg-white/10 transition ${userVal >= star ? 'text-amber-400' : 'text-slate-500'}`}
+                              aria-pressed={userVal === star}
+                              aria-label={`${star} star${star>1?'s':''}`}
+                            >★</button>
+                          );
+                        })}
+                      </div>
+                      <div className="text-[11px] text-slate-400">
+                        {getAverage(tool.name) ? (<span>{getAverage(tool.name)} <span className="text-slate-500">avg</span></span>) : <span className="italic">No ratings</span>}
+                      </div>
+                    </div>
                     <p className="mt-3 text-sm text-slate-300 line-clamp-5">{tool.description}</p>
                     <div className="mt-4 flex flex-wrap gap-1.5">
                       {tool.badges?.map(b => (
@@ -149,6 +211,27 @@ export default function App() {
                           <span className="inline-block w-1.5 h-1.5 rounded-full bg-brand-400" /> {doc.title}
                         </a>
                       ))}
+                      {tool.supportForums?.length && (
+                        <div className="pt-1">
+                          {tool.supportForums.map(f => (
+                            <a key={f.url} href={f.url} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 hover:text-brand-300 transition">
+                              <span className="inline-block w-1.5 h-1.5 rounded-full bg-emerald-400" /> {f.title}
+                            </a>
+                          ))}
+                        </div>
+                      )}
+                      {tool.related?.length && (
+                        <div className="pt-1 flex flex-wrap gap-1.5">
+                          {tool.related.map(r => (
+                            <button
+                              key={r}
+                              type="button"
+                              onClick={() => handleRelatedClick(r)}
+                              className="px-2 py-0.5 rounded-full bg-brand-500/10 border border-brand-400/30 text-[11px] font-medium text-brand-200 hover:bg-brand-500/20 transition"
+                            >{r}</button>
+                          ))}
+                        </div>
+                      )}
                     </div>
                   </div>
                   <div className="absolute -inset-px rounded-2xl opacity-0 group-hover:opacity-100 transition pointer-events-none bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.25),transparent_60%)]" />

@@ -1,0 +1,170 @@
+[
+  {
+    "name": "Paratext",
+    "tagline": "Collaborative Bible translation environment",
+    "description": "Primary environment for drafting, checking, and managing Bible translation projects with rich collaboration and validation tools.",
+    "categories": ["Translation", "Collaboration"],
+    "badges": ["Translation", "Collaboration"],
+    "platforms": ["Windows"],
+    "documentation": [ { "title": "User Guide", "url": "https://paratext.org/documentation/" } ],
+    "related": ["PTXprint", "SIL Converters"],
+    "supportForums": [ { "title": "Paratext Support", "url": "https://community.support.bible/c/paratext/15" } ]
+  },
+  {
+    "name": "PTXprint",
+    "tagline": "High quality scripture layout from Paratext",
+    "description": "Generates high-quality, print-ready PDFs from Paratext projects with fine layout control.",
+    "categories": ["Publishing", "Print"],
+    "badges": ["PDF", "Layout", "Paratext"],
+    "platforms": ["Windows"],
+    "documentation": [
+      { "title": "User Guide", "url": "https://software.sil.org/ptxprint/documentation/" },
+      { "title": "FAQ", "url": "https://software.sil.org/ptxprint/faq/" }
+    ],
+    "related": ["Paratext", "FontUtils"],
+    "supportForums": [ { "title": "PTXprint Forum", "url": "https://community.support.bible/c/ptxprint/34" } ]
+  },
+  {
+    "name": "FieldWorks (FLEx)",
+    "tagline": "Advanced lexicon and linguistic data management",
+    "description": "Tool suite for managing lexicons, texts, interlinearization, and linguistic analysis.",
+    "categories": ["Linguistics", "Lexicography"],
+    "badges": ["Lexicon", "Linguistics"],
+    "platforms": ["Windows"],
+    "documentation": [ { "title": "Overview", "url": "https://software.sil.org/fieldworks/" } ],
+    "related": ["WeSay"],
+    "supportForums": [ { "title": "FLEx Forum", "url": "https://community.support.bible/c/fieldworks-flex/27" } ]
+  },
+  {
+    "name": "WeSay",
+    "tagline": "Community-friendly dictionary development",
+    "description": "Lexicography tool designed to let language communities build dictionaries collaboratively.",
+    "categories": ["Lexicography", "Community"],
+    "badges": ["Dictionary", "Community"],
+    "platforms": ["Windows"],
+    "documentation": [ { "title": "Site", "url": "https://software.sil.org/wesay/" } ],
+    "related": ["FieldWorks (FLEx)"],
+    "supportForums": [ { "title": "WeSay Forum", "url": "https://community.support.bible/c/wesay/21" } ]
+  },
+  {
+    "name": "Scripture App Builder (SAB)",
+    "tagline": "Build Scripture apps for Android and iOS",
+    "description": "Packages scripture text, audio, and video into offline-capable mobile apps.",
+    "categories": ["Distribution", "Mobile"],
+    "badges": ["Mobile", "Apps"],
+    "platforms": ["Windows", "macOS"],
+    "documentation": [ { "title": "Docs", "url": "https://software.sil.org/scriptureappbuilder/" } ],
+    "related": ["Reading App Builder", "HearThis"],
+    "supportForums": [ { "title": "SAB Forum", "url": "https://community.support.bible/c/scripture-app-builder/20" } ]
+  },
+  {
+    "name": "Dictionary App Builder (DAB)",
+    "tagline": "Create offline dictionary apps",
+    "description": "Turns lexical data into mobile dictionary applications.",
+    "categories": ["Lexicography", "Mobile"],
+    "badges": ["Dictionary", "Apps"],
+    "platforms": ["Windows", "macOS"],
+    "documentation": [ { "title": "Docs", "url": "https://software.sil.org/dictionaryappbuilder/" } ],
+    "related": ["WeSay", "FieldWorks (FLEx)"],
+    "supportForums": [ { "title": "DAB Forum", "url": "https://community.support.bible/c/dictionary-app-builder/19" } ]
+  },
+  {
+    "name": "HearThis",
+    "tagline": "Rapid community Scripture audio recording",
+    "description": "Simplifies oral recording of Scripture drafts for checking and distribution.",
+    "categories": ["Audio", "Oral"],
+    "badges": ["Audio", "Recording"],
+    "platforms": ["Windows"],
+    "documentation": [ { "title": "Docs", "url": "https://software.sil.org/hearthis/" } ],
+    "related": ["SAB", "Paratext"],
+    "supportForums": [ { "title": "HearThis Forum", "url": "https://community.support.bible/c/hearthis/22" } ]
+  },
+  {
+    "name": "Adapt It",
+    "tagline": "Assisted adaptation of Scripture texts",
+    "description": "Facilitates adaptation of existing translations into related languages with translation memory.",
+    "categories": ["Adaptation", "Translation"],
+    "badges": ["Adaptation"],
+    "platforms": ["Windows", "Linux"],
+    "documentation": [ { "title": "Docs", "url": "https://adapt-it.org/" } ],
+    "related": ["Paratext"],
+    "supportForums": [ { "title": "Adapt It Forum", "url": "https://community.support.bible/c/adapt-it/14" } ]
+  },
+  {
+    "name": "Bloom",
+    "tagline": "Create and share books in local languages",
+    "description": "Tool for creating leveled readers and illustrated books with templates and translation helps.",
+    "categories": ["Literacy", "Publishing"],
+    "badges": ["Books", "Literacy"],
+    "platforms": ["Windows"],
+    "documentation": [ { "title": "Docs", "url": "https://bloomlibrary.org/" } ],
+    "related": ["SAB"],
+    "supportForums": [ { "title": "Bloom Forum", "url": "https://community.support.bible/c/bloom/18" } ]
+  },
+  {
+    "name": "Bibledit",
+    "tagline": "Online and offline scripture editing",
+    "description": "Cloud and desktop platform for scripture editing and project management.",
+    "categories": ["Translation", "Collaboration"],
+    "badges": ["Online", "Editing"],
+    "platforms": ["Windows", "Linux", "Android"],
+    "documentation": [ { "title": "Docs", "url": "https://bibledit.org/" } ],
+    "related": ["Paratext"],
+    "supportForums": []
+  },
+  {
+    "name": "Render",
+    "tagline": "Oral Bible translation workflow",
+    "description": "Supports Oral Bible Translation (OBT) teams with structured workflow and media management.",
+    "categories": ["Oral", "Workflow"],
+    "badges": ["Oral", "Workflow"],
+    "platforms": ["Windows"],
+    "documentation": [ { "title": "Docs", "url": "https://www.faithcomesbyhearing.com/mission/render" } ],
+    "related": ["HearThis"],
+    "supportForums": []
+  },
+  {
+    "name": "Autographa",
+    "tagline": "Open-source scripture translation editor",
+    "description": "Lightweight multilingual scripture translation tool with alignment and drafting aids.",
+    "categories": ["Translation"],
+    "badges": ["Open Source"],
+    "platforms": ["Windows", "Linux"],
+    "documentation": [ { "title": "Docs", "url": "https://autographa.org/" } ],
+    "related": ["Paratext"],
+    "supportForums": []
+  },
+  {
+    "name": "Keyman Developer",
+    "tagline": "Custom keyboard development for any script",
+    "description": "Create, test, and package custom keyboards for complex scripts and platforms.",
+    "categories": ["Input", "Script"],
+    "badges": ["Keyboard"],
+    "platforms": ["Windows"],
+    "documentation": [ { "title": "Docs", "url": "https://help.keyman.com/developer/" } ],
+    "related": ["FontUtils"],
+    "supportForums": [ { "title": "Keyman Community", "url": "https://community.software.sil.org/c/keyman/13" } ]
+  },
+  {
+    "name": "SIL Converters",
+    "tagline": "Convert between legacy and Unicode encodings",
+    "description": "Tools and rules for converting text data between different encodings and formats.",
+    "categories": ["Encoding", "Data"],
+    "badges": ["Conversion"],
+    "platforms": ["Windows"],
+    "documentation": [ { "title": "Docs", "url": "https://software.sil.org/silconverters/" } ],
+    "related": ["Paratext", "FontUtils"],
+    "supportForums": []
+  },
+  {
+    "name": "FontUtils",
+    "tagline": "Utilities for managing and testing fonts",
+    "description": "Collection of utilities aiding font rendering, inspection, and packaging.",
+    "categories": ["Fonts", "Script"],
+    "badges": ["Fonts"],
+    "platforms": ["Windows"],
+    "documentation": [ { "title": "Docs", "url": "https://software.sil.org/" } ],
+    "related": ["Keyman Developer"],
+    "supportForums": []
+  }
+]
