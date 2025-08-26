@@ -73,7 +73,7 @@ export default function App() {
           <div className="flex flex-wrap items-center gap-3 justify-between">
             <h1 className="text-xl sm:text-2xl font-semibold tracking-tight flex items-center gap-2">
               <span className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-gradient-to-br from-brand-400 to-brand-600 flex items-center justify-center shadow-soft ring-1 ring-white/10">🔎</span>
-              <GradientText>BT Tool Advisor</GradientText>
+              <GradientText>SCRIPT: BT Tool Advisor</GradientText>
             </h1>
             <div className="flex items-center gap-2">
               <button onClick={() => setDark(d => !d)} className="px-3 py-1.5 text-xs sm:text-sm rounded-md bg-white/10 hover:bg-white/15 backdrop-blur border border-white/10 transition">
